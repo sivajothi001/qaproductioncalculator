@@ -30,5 +30,4 @@
 			      <class name="Test_Cases.TC_Client_Edit"/>
 			    </classes>
 	  </test>  <!--Test -->
-
 </suite> <!-- Suite -->
