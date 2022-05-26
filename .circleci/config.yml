@@ -1,0 +1,75 @@
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:  
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+      - image: circleci/php:apache-stretch
+         
+    
+    working_directory : ~/testHTMLproject
+
+    steps:
+      - checkout
+      
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build testHTMLproject -t html-server-image:v1
+    
+      - run:
+          name: Run docker image
+          command: |
+            docker run -d -p 80:80 --name htmlContainer html-server-image:v1
+
+            
+      - run:
+          name: Check the images present
+          command: |
+            docker ps
+            
+      - run:
+          name: Check if server is up
+          command: |  
+            curl localhost:80   
+  
+      - checkout
+      
+      - run: mkdir test-reports
+      
+      - run:
+          name: Download Selenium
+          command: |
+            curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      
+      - run:
+          name: Start Selenium
+          command: |
+            java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          background: true
+
+      - run: mvn dependency:go-offline
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+
+      # run tests!
+      - run: mvn clean integration-test
+      
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/testng/results/
+            find . -type f -regex "./test-output/emailable-report.html" -exec cp {} ~/testng/results/ \;
+          when: always
+      - store_test_results:
+          path: ~/testng/results/
+      - store_artifacts:
+          path: ~/testng/results/
+      - store_artifacts:
+          path:  testng/results/

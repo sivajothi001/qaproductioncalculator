@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="TSC_PrinterCostComparison" duration-ms="170499" started-at="2022-05-26T13:53:39 IST" finished-at="2022-05-26T13:56:29 IST">
+    <groups>
+    </groups>
+    <test name="TC_LoginFunctionality" duration-ms="16264" started-at="2022-05-26T13:53:39 IST" finished-at="2022-05-26T13:53:55 IST">
+      <class name="Test_Cases.TC_Login">
+        <test-method status="PASS" signature="delay()[pri:0, instance:Test_Cases.TC_Login@4516af24]" name="delay" is-config="true" duration-ms="5003" started-at="2022-05-26T13:53:39 IST" finished-at="2022-05-26T13:53:44 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method status="PASS" signature="Logintest(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test_Cases.TC_Login@4516af24]" name="Logintest" duration-ms="10457" started-at="2022-05-26T13:53:44 IST" data-provider="loginDataExcel" finished-at="2022-05-26T13:53:55 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admintest@sgkinc.com]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Welcome123!]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Logintest -->
+      </class> <!-- Test_Cases.TC_Login -->
+    </test> <!-- TC_LoginFunctionality -->
+    <test name="TC_CreatePrinterFunctionality" duration-ms="17678" started-at="2022-05-26T13:53:55 IST" finished-at="2022-05-26T13:54:13 IST">
+      <class name="Test_Cases.TC_Printer_Create">
+        <test-method status="PASS" signature="delay()[pri:0, instance:Test_Cases.TC_Printer_Create@60438a68]" name="delay" is-config="true" duration-ms="5001" started-at="2022-05-26T13:53:55 IST" finished-at="2022-05-26T13:54:00 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method status="PASS" signature="CreatePrinter(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test_Cases.TC_Printer_Create@60438a68]" name="CreatePrinter" duration-ms="12572" started-at="2022-05-26T13:54:00 IST" data-provider="CreatePrintersData" finished-at="2022-05-26T13:54:13 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[auto_printer_v0526134047]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Yes]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[No]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CreatePrinter -->
+      </class> <!-- Test_Cases.TC_Printer_Create -->
+    </test> <!-- TC_CreatePrinterFunctionality -->
+    <test name="TC_CreatePrinterCostFunctionality" duration-ms="123630" started-at="2022-05-26T13:54:13 IST" finished-at="2022-05-26T13:56:17 IST">
+      <class name="Test_Cases.TC_PrinterCost_Create">
+        <test-method status="PASS" signature="delay()[pri:0, instance:Test_Cases.TC_PrinterCost_Create@6c9f5c0d]" name="delay" is-config="true" duration-ms="5001" started-at="2022-05-26T13:54:13 IST" finished-at="2022-05-26T13:54:18 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method status="PASS" signature="CreatePrinterCost(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test_Cases.TC_PrinterCost_Create@6c9f5c0d]" name="CreatePrinterCost" duration-ms="118549" started-at="2022-05-26T13:54:18 IST" data-provider="CreatePrintersCostData" finished-at="2022-05-26T13:56:17 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[auto_printer_v0526134047]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[auto_item_v0526134045]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[PrinterCostsList]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CreatePrinterCost -->
+      </class> <!-- Test_Cases.TC_PrinterCost_Create -->
+    </test> <!-- TC_CreatePrinterCostFunctionality -->
+    <test name="TC_PrinterCostComparisonFunctionality" duration-ms="12545" started-at="2022-05-26T13:56:17 IST" finished-at="2022-05-26T13:56:29 IST">
+      <class name="Test_Cases.TC_PrinterCostComparison">
+        <test-method status="PASS" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:Test_Cases.TC_PrinterCostComparison@530612ba]" name="setup" is-config="true" duration-ms="3757" started-at="2022-05-26T13:53:35 IST" finished-at="2022-05-26T13:53:39 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[QAEnv]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="delay()[pri:0, instance:Test_Cases.TC_PrinterCostComparison@530612ba]" name="delay" is-config="true" duration-ms="5003" started-at="2022-05-26T13:56:17 IST" finished-at="2022-05-26T13:56:22 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method status="PASS" signature="PrinterCostComparison(java.lang.String,java.lang.String)[pri:0, instance:Test_Cases.TC_PrinterCostComparison@530612ba]" name="PrinterCostComparison" duration-ms="7486" started-at="2022-05-26T13:56:22 IST" data-provider="CostComparison" finished-at="2022-05-26T13:56:29 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[auto_item_v0526134045]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[auto_printer_v0526134048]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PrinterCostComparison -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Test_Cases.TC_PrinterCostComparison@530612ba]" name="tearDown" is-config="true" duration-ms="0" started-at="2022-05-26T13:56:29 IST" finished-at="2022-05-26T13:56:29 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Test_Cases.TC_PrinterCostComparison -->
+    </test> <!-- TC_PrinterCostComparisonFunctionality -->
+  </suite> <!-- TSC_PrinterCostComparison -->
+</testng-results>

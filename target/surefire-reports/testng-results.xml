@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="3396" started-at="2022-03-01T16:40:31 IST" finished-at="2022-03-01T16:40:35 IST">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="3396" started-at="2022-03-01T16:40:31 IST" finished-at="2022-03-01T16:40:35 IST">
+      <class name="Test_Cases.TC_Login">
+        <test-method status="PASS" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:Test_Cases.TC_Login@4e7dc304]" name="setup" is-config="true" duration-ms="6042" started-at="2022-03-01T16:40:25 IST" finished-at="2022-03-01T16:40:31 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[QAEnv]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="Logintest(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test_Cases.TC_Login@4e7dc304]" name="Logintest" duration-ms="2446" started-at="2022-03-01T16:40:32 IST" data-provider="loginDataExcel" finished-at="2022-03-01T16:40:35 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admintest@sgkinc.com]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Welcome123!]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Logintest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Test_Cases.TC_Login@4e7dc304]" name="tearDown" is-config="true" duration-ms="110" started-at="2022-03-01T16:40:35 IST" finished-at="2022-03-01T16:40:35 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Test_Cases.TC_Login -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

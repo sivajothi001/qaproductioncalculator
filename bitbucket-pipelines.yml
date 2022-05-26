@@ -1,0 +1,24 @@
+image: maven:3.3.9
+pipelines:
+  default:
+    - step:
+        script:
+          - mvn -B -DXMLFiles=testng.xml verify
+          - bash pom.xml # to setup local testing
+      
+#image: atlassian/default-image:2
+#pipelines:
+#    branches:
+#      master:
+#        - step:
+#            name: 'Selenium Test - Chrome'
+#            script:
+#              - mvn clean test -DXMLFiles=testng.xml
+#            services:
+#              - chrome
+#            caches:
+#              - maven
+#definitions:
+#  services:
+#    chrome:
+#      image: selenium/standalone-chrome

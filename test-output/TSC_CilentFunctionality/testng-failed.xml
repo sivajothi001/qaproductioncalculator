@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [TSC_CilentFunctionality]">
+  <parameter name="environment" value="QAEnv"/>
+  <parameter name="browser" value="chrome"/>
+  <listeners>
+    <listener class-name="testUtilities.ExtentReportManager"/>
+  </listeners>
+  <test thread-count="5" name="TC_DeletePrinterCostFunctionality(failed)">
+    <parameter name="row" value="0"/>
+    <classes>
+      <class name="Test_Cases.TC_PrinterCost_Delete">
+        <methods>
+          <include name="delay"/>
+          <include name="DeleteItem" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- Test_Cases.TC_PrinterCost_Delete -->
+    </classes>
+  </test> <!-- TC_DeletePrinterCostFunctionality(failed) -->
+  <test thread-count="5" name="TC_DeleteClientFunctionality(failed)">
+    <parameter name="row" value="0"/>
+    <classes>
+      <class name="Test_Cases.TC_Client_Delete">
+        <methods>
+          <include name="delay"/>
+          <include name="tearDown"/>
+          <include name="DeleteClient" invocation-numbers="0"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- Test_Cases.TC_Client_Delete -->
+    </classes>
+  </test> <!-- TC_DeleteClientFunctionality(failed) -->
+  <test thread-count="5" name="TC_DeleteItemFunctionality(failed)">
+    <parameter name="row" value="0"/>
+    <classes>
+      <class name="Test_Cases.TC_Item_Delete">
+        <methods>
+          <include name="delay"/>
+          <include name="tearDown"/>
+          <include name="DeleteItem" invocation-numbers="0"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- Test_Cases.TC_Item_Delete -->
+    </classes>
+  </test> <!-- TC_DeleteItemFunctionality(failed) -->
+  <test thread-count="5" name="TC_DeletePrinterFunctionality(failed)">
+    <parameter name="row" value="0"/>
+    <classes>
+      <class name="Test_Cases.TC_Printer_Delete">
+        <methods>
+          <include name="delay"/>
+          <include name="tearDown"/>
+          <include name="DeleteItem" invocation-numbers="0"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- Test_Cases.TC_Printer_Delete -->
+    </classes>
+  </test> <!-- TC_DeletePrinterFunctionality(failed) -->
+  <test thread-count="5" name="TC_Quotes_Delete(failed)">
+    <parameter name="row" value="0"/>
+    <classes>
+      <class name="Test_Cases.TC_Quotes_Delete">
+        <methods>
+          <include name="delay"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="DeleteQuotes" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- Test_Cases.TC_Quotes_Delete -->
+    </classes>
+  </test> <!-- TC_Quotes_Delete(failed) -->
+</suite> <!-- Failed suite [TSC_CilentFunctionality] -->

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [TSC_PrinterCostComparison]">
+  <parameter name="environment" value="QAEnv"/>
+  <parameter name="browser" value="chrome"/>
+  <listeners>
+    <listener class-name="testUtilities.ExtentReportManager"/>
+  </listeners>
+  <test thread-count="5" name="TC_PrinterCostComparisonFunctionality(failed)">
+    <parameter name="row" value="0"/>
+    <classes>
+      <class name="Test_Cases.TC_PrinterCostComparison">
+        <methods>
+          <include name="delay"/>
+          <include name="PrinterCostComparison" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- Test_Cases.TC_PrinterCostComparison -->
+    </classes>
+  </test> <!-- TC_PrinterCostComparisonFunctionality(failed) -->
+</suite> <!-- Failed suite [TSC_PrinterCostComparison] -->
