@@ -22305,3 +22305,15 @@
 2022-05-27 16:28:33,180 - Production Calculator -INFO - Launching Chrome Browser
 2022-05-27 16:31:28,631 - Production Calculator -INFO - Launching Chrome Browser
 2022-05-27 17:27:01,027 - Production Calculator -INFO - Launching Chrome Browser
+2022-05-27 17:40:10,732 - Production Calculator -INFO - Launching Chrome Browser
+2022-05-27 17:40:11,641 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 102.0.5005.61 (resolved driver for Chrome 102)
+2022-05-27 17:40:11,662 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as /Users/sivajothieswaran/.cache/selenium/chromedriver/mac64/102.0.5005.61/chromedriver
+2022-05-27 17:40:14,892 - Production Calculator -INFO - Launched Chrome Browser
+2022-05-27 17:40:15,030 - Production Calculator -INFO - Browser maximized
+2022-05-27 17:40:16,373 - Production Calculator -INFO - Get the URL
+2022-05-27 17:40:22,448 - Production Calculator -INFO - Login funcionality started
+2022-05-27 17:40:22,762 - Production Calculator -INFO - Enter the UserName
+2022-05-27 17:40:22,847 - Production Calculator -INFO - Enter the Password
+2022-05-27 17:40:23,083 - Production Calculator -INFO - Click the Submit button
+2022-05-27 17:40:23,090 - Production Calculator -INFO - verified Page title
+2022-05-27 17:40:23,090 - Production Calculator -INFO - Login funcionality Completed
