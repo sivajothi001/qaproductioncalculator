@@ -60,7 +60,7 @@ public class BaseClass {
 						
 			//WebDriverManager.chromedriver().setup();
 			
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver 2");  
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver.exe");  
 			
 			driver =new ChromeDriver(options);
 			
