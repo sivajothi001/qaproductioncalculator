@@ -58,7 +58,7 @@ public class BaseClass {
 			 
 			log.info("Launching Chrome Browser");
 						
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().setup();
 			
 			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver.exe");  
 			

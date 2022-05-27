@@ -22296,3 +22296,12 @@
 2022-05-27 10:57:18,564 [main] INFO Production Calculator - Launched Chrome Browser
 2022-05-27 10:57:18,773 [main] INFO Production Calculator - Browser maximized
 2022-05-27 10:57:21,486 [main] INFO Production Calculator - Get the URL
+2022-05-27 16:25:27,954 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using geckodriver 0.31.0 (resolved driver for Firefox 100)
+2022-05-27 16:25:27,991 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Reading https://api.github.com/repos/mozilla/geckodriver/releases to seek geckodriver
+2022-05-27 16:25:28,230 [main] INFO io.github.bonigarcia.wdm.online.Downloader - Downloading https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-macos.tar.gz
+2022-05-27 16:25:29,346 [main] INFO io.github.bonigarcia.wdm.online.Downloader - Extracting driver from compressed file geckodriver-v0.31.0-macos.tar.gz
+2022-05-27 16:25:29,817 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.gecko.driver as /Users/sivajothieswaran/.cache/selenium/geckodriver/mac64/0.31.0/geckodriver
+2022-05-27 16:26:10,848 [main] INFO Production Calculator - Launching Chrome Browser
+2022-05-27 16:28:33,180 [main] INFO Production Calculator - Launching Chrome Browser
+2022-05-27 16:31:28,631 [main] INFO Production Calculator - Launching Chrome Browser
+2022-05-27 17:27:01,027 [main] INFO Production Calculator - Launching Chrome Browser

@@ -6,69 +6,43 @@
   <listeners>
     <listener class-name="testUtilities.ExtentReportManager"/>
   </listeners>
-  <test thread-count="5" name="TC_DeletePrinterCostFunctionality(failed)">
+  <test thread-count="5" name="TC_LoginFunctionality(failed)">
     <parameter name="row" value="0"/>
     <classes>
-      <class name="Test_Cases.TC_PrinterCost_Delete">
-        <methods>
-          <include name="delay"/>
-          <include name="DeleteItem" invocation-numbers="0"/>
-          <include name="tearDown"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- Test_Cases.TC_PrinterCost_Delete -->
-    </classes>
-  </test> <!-- TC_DeletePrinterCostFunctionality(failed) -->
-  <test thread-count="5" name="TC_DeleteClientFunctionality(failed)">
-    <parameter name="row" value="0"/>
-    <classes>
-      <class name="Test_Cases.TC_Client_Delete">
-        <methods>
-          <include name="delay"/>
-          <include name="tearDown"/>
-          <include name="DeleteClient" invocation-numbers="0"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- Test_Cases.TC_Client_Delete -->
-    </classes>
-  </test> <!-- TC_DeleteClientFunctionality(failed) -->
-  <test thread-count="5" name="TC_DeleteItemFunctionality(failed)">
-    <parameter name="row" value="0"/>
-    <classes>
-      <class name="Test_Cases.TC_Item_Delete">
-        <methods>
-          <include name="delay"/>
-          <include name="tearDown"/>
-          <include name="DeleteItem" invocation-numbers="0"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- Test_Cases.TC_Item_Delete -->
-    </classes>
-  </test> <!-- TC_DeleteItemFunctionality(failed) -->
-  <test thread-count="5" name="TC_DeletePrinterFunctionality(failed)">
-    <parameter name="row" value="0"/>
-    <classes>
-      <class name="Test_Cases.TC_Printer_Delete">
-        <methods>
-          <include name="delay"/>
-          <include name="tearDown"/>
-          <include name="DeleteItem" invocation-numbers="0"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- Test_Cases.TC_Printer_Delete -->
-    </classes>
-  </test> <!-- TC_DeletePrinterFunctionality(failed) -->
-  <test thread-count="5" name="TC_Quotes_Delete(failed)">
-    <parameter name="row" value="0"/>
-    <classes>
-      <class name="Test_Cases.TC_Quotes_Delete">
+      <class name="Test_Cases.TC_Login">
         <methods>
           <include name="delay"/>
           <include name="tearDown"/>
           <include name="setup"/>
-          <include name="DeleteQuotes" invocation-numbers="0"/>
+          <include name="Logintest"/>
         </methods>
-      </class> <!-- Test_Cases.TC_Quotes_Delete -->
+      </class> <!-- Test_Cases.TC_Login -->
     </classes>
-  </test> <!-- TC_Quotes_Delete(failed) -->
+  </test> <!-- TC_LoginFunctionality(failed) -->
+  <test thread-count="5" name="TC_CreateCilentsFunctionality(failed)">
+    <parameter name="row" value="0"/>
+    <classes>
+      <class name="Test_Cases.TC_Client_Create">
+        <methods>
+          <include name="delay"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="CreateCilents"/>
+        </methods>
+      </class> <!-- Test_Cases.TC_Client_Create -->
+    </classes>
+  </test> <!-- TC_CreateCilentsFunctionality(failed) -->
+  <test thread-count="5" name="TC_EditCilentsFunctionality(failed)">
+    <parameter name="row" value="0"/>
+    <classes>
+      <class name="Test_Cases.TC_Client_Edit">
+        <methods>
+          <include name="delay"/>
+          <include name="EditCilents"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- Test_Cases.TC_Client_Edit -->
+    </classes>
+  </test> <!-- TC_EditCilentsFunctionality(failed) -->
 </suite> <!-- Failed suite [TSC_CilentFunctionality] -->
