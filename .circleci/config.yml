@@ -4,7 +4,7 @@ jobs:
 
   build-and-test:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: cimg/openjdk:17.0.3
 
     steps:
       - checkout   
