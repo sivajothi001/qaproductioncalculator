@@ -14,16 +14,7 @@ jobs:
           command: sudo apt update
       - run:
           name: Startssssss Selenium
-          command: apt-get update \
-                   && apt-get install -y \
-                   unzip \
-                   wget \
-                   libnss3 \
-                   && rm -rf /var/lib/apt/lists/* \
-                   && echo "progress = dot:giga" | tee /etc/wgetrc \
-                   && mkdir -p /mnt /opt /data \
-                   && wget https://github.com/andmarios/duphard/releases/download/v1.0/duphard -O /bin/duphard \
-                   && chmod +x /bin/duphard
+          command: sudo apt install -y libnss3.so
   test:
     docker:
       - image: cimg/openjdk:11.0
