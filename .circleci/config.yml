@@ -24,7 +24,7 @@ jobs:
       # Then run your tests!
       - run:
           name: test
-          command: mvn test -Dtest=SignUp
+          command: mvn test -Dtest=TSC_CilentFunctionality.xml
       - store_test_results:
           path: target/surefire-reports
 workflows:
