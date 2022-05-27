@@ -14,7 +14,7 @@ jobs:
           command: sudo apt update
       - run:
          sudo apt update
-         sudo apt install libnss3.so
+         sudo apt-get install libnss3
   test:
     docker:
       - image: cimg/openjdk:11.0
