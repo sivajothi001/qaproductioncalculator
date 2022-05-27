@@ -3,6 +3,8 @@ package testBase;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +19,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -36,7 +39,7 @@ public class BaseClass {
 		
 	@BeforeSuite
 	@Parameters({"browser","environment"})
-	public void setup(String Browser,String environemnt) {
+	public void setup(String Browser,String environemnt) throws MalformedURLException {
 		
        ConfigFactory.setProperty("env", environemnt);
         
@@ -62,7 +65,13 @@ public class BaseClass {
 			
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver");  
 			
-			driver =new ChromeDriver(options);
+		     driver = new RemoteWebDriver(         
+
+		            new URL("http://127.0.0.1:9515"),         
+
+		            new ChromeOptions()); 
+			
+			//driver =new ChromeDriver(options);
 			
 			log.info("Launched Chrome Browser");
 			
