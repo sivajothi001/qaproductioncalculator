@@ -2,11 +2,20 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:16.13.1-browsers
-   
+      - image: ubuntu-2004:202201-02
+    steps:
+      - checkout
+      - run: mkdir test-reports
+      - run:
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.0.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.9.0.jar -log test-reports/selenium.log
+          background: true    
   test:
     docker:
-      - image: cimg/openjdk:11.0
+      - image: cimg/openjdk:11.0.13
     steps:
       - checkout
       - run:
