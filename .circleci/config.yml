@@ -10,18 +10,11 @@ jobs:
           name: Download Selenium
           command: curl -O http://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.0.jar
       - run:
-          name: Start Selenium
-          command: java -jar selenium-server-standalone-3.9.0.jar -log test-reports/selenium.log
-          background: true
-      - run:
           name: Start install Selenium
           command: sudo apt update
       - run:
           name: Startssssss Selenium
           command: sudo apt-get install libnss3
-      - run:
-          name: Start ddddSelenium
-          command: sudo apt-file search  libnss3.so
   test:
     docker:
       - image: cimg/openjdk:11.0
