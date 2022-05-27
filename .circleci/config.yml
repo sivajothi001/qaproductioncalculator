@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
-    build: # name of your job
+  build: # name of your job
     machine: # executor type
-      image: ubuntu-2004:202010-01   
+      image: ubuntu-2004:202010-01  
     test:
  
      - image: ubuntu-2004:202010-01 
