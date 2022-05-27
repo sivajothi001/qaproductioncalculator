@@ -45,7 +45,7 @@
 		<dependency>
 		    <groupId>io.github.bonigarcia</groupId>
 		    <artifactId>webdrivermanager</artifactId>
-		    <version>5.0.3</version>
+		    <version>5.2.0</version>
 		</dependency>
 
 <!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
