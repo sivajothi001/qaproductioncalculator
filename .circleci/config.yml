@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: mvn -B -DskipTests clean package install
+          command: mvn -B -DskipTests clean package
       # Then run your tests!
       - run:
           name: test
