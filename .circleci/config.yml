@@ -18,12 +18,10 @@ jobs:
           command: sudo apt install libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0 libgdk-pixbuf2.0-0 libgtk-3-0 libgbm-dev libnss3-dev libxss-dev
       - run:
           name: Startssssss Selenium
-          command: apt-cache search libnss
-          background: true
+          command: sudo apt-cache search libnss
       - run:
           name: Start ddddSelenium
-          command: apt-file search  libnss3.so
-          background: true
+          command: sudo apt-file search  libnss3.so
   test:
     docker:
       - image: cimg/openjdk:11.0
