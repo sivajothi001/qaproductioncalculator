@@ -61,17 +61,11 @@ public class BaseClass {
 			 
 			log.info("Launching Chrome Browser");
 						
-			//WebDriverManager.chromedriver().setup();
+			WebDriverManager.chromedriver().setup();
 			
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver");  
+			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver");  
 			
-		     driver = new RemoteWebDriver(         
-
-		            new URL("http://127.0.0.1:9515"),         
-
-		            new ChromeOptions()); 
-			
-			//driver =new ChromeDriver(options);
+			driver =new ChromeDriver(options);
 			
 			log.info("Launched Chrome Browser");
 			
