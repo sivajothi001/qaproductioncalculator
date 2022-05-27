@@ -13,11 +13,17 @@ jobs:
           name: Start install Selenium
           command: sudo apt update
       - run:
-         sudo apt update
-         sudo apt-get install libc6
-         sudo apt-get install libnspr4
-         sudo apt-get install libsqlite3-0
-         sudo apt-get install libnss3
+          name: Start install11 Selenium
+          command: sudo apt libc6
+      - run:
+          name: Start install111 Selenium
+          command: sudo apt libnspr4
+      - run:
+          name: Start install1111 Selenium
+          command: sudo apt libsqlite3-0
+      - run:
+          name: Start install11111 Selenium
+          command: sudo apt libnss3
   test:
     docker:
       - image: cimg/openjdk:11.0
