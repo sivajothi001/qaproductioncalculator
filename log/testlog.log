@@ -22287,3 +22287,12 @@
 2022-05-26 13:56:29,588 - Production Calculator -INFO - LOG:INFO - To Select Printer Name auto_printer_v0526134047
 2022-05-26 13:56:29,625 - Production Calculator -INFO - LOG:INFO - To Clicked Compare button 
 2022-05-26 13:56:29,625 - Production Calculator -INFO - LOG:INFO - Successfully Completed Printer Cost Comparison
+2022-05-27 10:57:04,431 - Production Calculator -INFO - Launching Chrome Browser
+2022-05-27 10:57:10,357 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 102.0.5005.61 (resolved driver for Chrome 102)
+2022-05-27 10:57:10,383 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Reading https://chromedriver.storage.googleapis.com/ to seek chromedriver
+2022-05-27 10:57:10,923 - io.github.bonigarcia.wdm.online.Downloader -INFO - Downloading https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_mac64.zip
+2022-05-27 10:57:12,363 - io.github.bonigarcia.wdm.online.Downloader -INFO - Extracting driver from compressed file chromedriver_mac64.zip
+2022-05-27 10:57:12,483 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as /Users/sivajothieswaran/.cache/selenium/chromedriver/mac64/102.0.5005.61/chromedriver
+2022-05-27 10:57:18,564 - Production Calculator -INFO - Launched Chrome Browser
+2022-05-27 10:57:18,773 - Production Calculator -INFO - Browser maximized
+2022-05-27 10:57:21,486 - Production Calculator -INFO - Get the URL
