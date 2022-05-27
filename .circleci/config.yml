@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:18.2.0
+      - image: cimg/node:18.2.0 -browsers
     steps:
       - checkout
       - run: mkdir test-reports
@@ -31,4 +31,6 @@ workflows:
   sample:
     jobs:
       - build
-      - test
+      - test:
+         requires:
+               - build
