@@ -14,7 +14,7 @@ jobs:
           command: sudo apt update
       - run:
           name: Startssssss Selenium
-          command: sudo apt-cache search nss
+          command: sudo apt install libssl1.0.0
   test:
     docker:
       - image: cimg/openjdk:11.0
