@@ -13,8 +13,8 @@ jobs:
           name: Start install Selenium
           command: sudo apt update
       - run:
-          name: Startssssss Selenium
-          command: sudo apt install libssl1.0.0
+         sudo apt update
+         sudo apt install libssl1.0.0
   test:
     docker:
       - image: cimg/openjdk:11.0
