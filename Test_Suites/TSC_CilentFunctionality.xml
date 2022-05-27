@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="TSC_CilentFunctionality">
  
-  <parameter name="browser" value="Firefox"/>
+  <parameter name="browser" value="chrome"/>
   <parameter name="environment" value="QAEnv"/>
    <listeners>
 	    <!-- <listener class-name="testUtilities.SeleniumPDFReportWithIReporter"/>-->
