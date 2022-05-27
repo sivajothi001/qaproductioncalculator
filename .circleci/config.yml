@@ -15,7 +15,6 @@ jobs:
       - store_test_results:
           path: target/surefire-reports
 workflows:
-  sample:
     jobs:
       - build
       - test
