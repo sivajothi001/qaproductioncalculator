@@ -1,6 +1,9 @@
 version: 2.1
 orbs: 
   maven: circleci/maven@1.3.0
+  auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
   
 workflows:
   maven_test:
