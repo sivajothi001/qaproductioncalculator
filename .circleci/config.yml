@@ -14,7 +14,7 @@ jobs:
           command: sudo apt update
       - run:
           name: Startssssss Selenium
-          command: sudo apt install -y libnss3.so
+          command: sudo apt-cache search nss
   test:
     docker:
       - image: cimg/openjdk:11.0
