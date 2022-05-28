@@ -1,53 +1,44 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:7.10
       - image: selenium/standalone-chrome:3.11.0
-      
-      # Specify service dependencies here if necessary  
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-            
     steps:
-      - checkout    
-      - setup_remote_docker
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "pom.xml" }}
-          
+      - checkout
+      - run: mkdir test-reports
       - run:
-          name: create docker network
-          command: docker network create grid
-     
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.0.jar
       - run:
-          name: install selenium-hub
-          command: docker run -d --rm -p 4444:4444 --net grid --name selenium-hub selenium/hub:3.11.0
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.9.0.jar -log test-reports/selenium.log
+          background: true  
+      - run:
+         name: install selenium-hub
+         command: docker run -d --rm -p 4444:4444 --net grid --name selenium-hub selenium/hub:3.11.0
           
       - run:
           name: install selenium-node
-          command: docker run -d --rm --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome:3.11.0
-      
+          command: docker run -d --rm --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome:3.11.0  
+  test:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
       - run:
-          name: install-npm
-          command: npm install
-        
-      # run tests!
-      - run: 
-          name: run tests
+          name: build
+          command: mvn -B -DskipTests clean package
+
+      - run:
+          name: test
           command: mvn test
+      - store_test_results:
+          path: target/surefire-reports
+workflows:
+  sample:
+    jobs:
+      - build
+      - test:
+         requires:
+               - build
