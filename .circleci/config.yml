@@ -10,8 +10,24 @@ jobs:
       - run:
           name: Start install1111 Selenium
           command: sudo apt install libnss3
+  test:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: build
+          command: mvn -B -DskipTests clean package
 
+      - run:
+          name: test
+          command: mvn test
+      - store_test_results:
+          path: target/surefire-reports
 workflows:
   sample:
     jobs:
       - build
+      - test:
+         requires:
+               - build
