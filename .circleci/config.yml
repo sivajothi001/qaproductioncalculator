@@ -1,6 +1,6 @@
 version: 2.1
 orbs: 
-  maven: circleci/maven@@x.y
+  maven: circleci/maven@x.y
   auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
