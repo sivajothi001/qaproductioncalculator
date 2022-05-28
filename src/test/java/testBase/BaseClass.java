@@ -19,6 +19,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterSuite;
@@ -64,11 +65,17 @@ public class BaseClass {
 		    
 			log.info("Launching Chrome Browser");
 						
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().setup();
 			
 			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver");  
 			
-			driver =new ChromeDriver(options);
+			 DesiredCapabilities capability = new DesiredCapabilities();
+			 
+			 capability.setBrowserName("chrome");
+			
+			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
+			
+			//driver =new ChromeDriver(options);
 			
 			log.info("Launched Chrome Browser");
 			
