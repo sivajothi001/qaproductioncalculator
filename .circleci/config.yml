@@ -1,30 +1,84 @@
+# This code is licensed from CircleCI to the user under the MIT license.
+# See here for details: https://circleci.com/developer/orbs/licensing
 version: 2.1
-jobs:
-  build:
-    docker:
-      - image: circleci/node:7.10
-      - image: selenium/standalone-chrome:3.11.0
+description: Maven commmand execution and cache management
+
+commands:
+  build-jar:
+    parameters:
+      build-flags:
+        type: string
+        description: Flags for mvn package / mvn deploy
+        default: --settings settings.xml -DskipTests
+      directory:
+        type: string
+        description: Directory to execute the maven build
+        default: '.'
+      circle-branch:
+        type: string
+        description: Permissible Circle branch to maven deploy
+        default: master
     steps:
-      - checkout
-      - run: mkdir test-reports
-      - setup_remote_docker
       - run:
-          name: create docker network
-          command: docker network create grid
+          name: Build JAR
+          command: |
+            source $BASH_ENV
+            cd << parameters.directory >>
+            if [ "$CIRCLE_BRANCH" == "<< parameters.circle-branch >>" ]
+               then
+                mvn clean deploy << parameters.build-flags >>
+                if find *Service -maxdepth 0 -type d; then
+                  find *Service -maxdepth 0 -type d | while read service_name; do
+                    aws s3 cp ${service_name}/target/spec/openapi.json s3://drift-api-specs/${service_name}.json || echo "failed to push ${service_name} spec to s3"
+                  done
+                fi
+               else
+                mvn clean package << parameters.build-flags >>
+            fi
+
+  run-tests:
+    steps:
       - run:
-          name: Download Selenium
-          command: curl -O http://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.0.jar
+          name: Run Tests
+          command: |
+            TESTFILES=$(circleci tests glob "**/src/test/**/*.java" | circleci tests split --split-by=timings)
+            TESTFILES=$(echo $TESTFILES | sed -r -e 's/\s(\S+\/)+/,/g' | sed -r -e 's/^(\S+\/)+//g')
+            echo $TESTFILES
+            mvn -Dtest=${TESTFILES} test -DfailIfNoTests=false --settings settings.xml
+
+  persist-cache:
+    description: Persist the local .m2 directory based on the pom checksum
+    parameters:
+      key:
+        type: string
+        description: UUID for cached data (once written to, cannot be re-written)
+        default: maven-v2-dependencies-{{ checksum "pom.xml" }}
+    steps:
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: << parameters.key >>
+
+  restore-cache:
+    description: Restore the .m2 cache for our current pom's checksum
+    parameters:
+      key:
+        type: string
+        description: UUID for cached data (once written to, cannot be re-written)
+        default: maven-v2-dependencies-{{ checksum "pom.xml" }}
+    steps:
+      - restore_cache:
+          keys:
+            - << parameters.key >>
+
+  fetch-from-s3:
+    parameters:
+      key:
+        type: string
+        description: S3 key of gzipped tarball to fetch
+    steps:
       - run:
-          name: Start Selenium
-          command: java -jar selenium-server-standalone-3.9.0.jar -log test-reports/selenium.log
-          background: true  
-      - run:
-         name: install selenium-hub
-         command: docker run -d --rm -p 4444:4444 --net grid --name selenium-hub selenium/hub:3.11.0
-          
-      - run:
-          name: install selenium-node
-          command: docker run -d --rm --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome:3.11.0  
-      - run:
-          name: test
-          command: mvn test
+          name: Decompress tarball from S3 into .m2
+          command: |
+            mkdir ~/.m2 || eval "ls ~/.m2"
+            curl --retry 3 --retry-delay 5 -s https://s3.amazonaws.com/<< parameters.key >> | tar -xzC ~/.m2 -f -
