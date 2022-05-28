@@ -4,44 +4,20 @@ jobs:
     docker:
       - image: cimg/node:18.2.0
     steps:
-      - checkout
-      - run: mkdir test-reports
-      - run:
-          name: Download Selenium
-          command: curl -O http://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.0.jar
       - run:
           name: Start install Selenium
-          command: sudo apt update
+          command: sudo apt remove libnss3
       - run:
           name: Start install11 Selenium
-          command: sudo apt libc6
+          command: sudo apt autoclean && sudo apt autoremove
       - run:
           name: Start install111 Selenium
-          command: sudo apt libnspr4
+          command: ssudo apt update
       - run:
           name: Start install1111 Selenium
-          command: sudo apt libsqlite3-0
-      - run:
-          name: Start install11111 Selenium
-          command: sudo apt libnss3
-  test:
-    docker:
-      - image: cimg/openjdk:11.0
-    steps:
-      - checkout
-      - run:
-          name: build
-          command: mvn -B -DskipTests clean package
+          command: sudo apt install libnss3
 
-      - run:
-          name: test
-          command: mvn test
-      - store_test_results:
-          path: target/surefire-reports
 workflows:
   sample:
     jobs:
       - build
-      - test:
-         requires:
-               - build
