@@ -8,6 +8,9 @@ jobs:
       - checkout
       - run: mkdir test-reports
       - run:
+          name: create docker network
+          command: docker network create grid
+      - run:
           name: Download Selenium
           command: curl -O http://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.0.jar
       - run:
