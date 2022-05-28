@@ -58,7 +58,10 @@ public class BaseClass {
 			ChromeOptions options = new ChromeOptions();
 			
 		    options.setExperimentalOption("prefs", prefs);
-			 
+		    options.addArguments("--no-sandbox");
+		    options.addArguments("--headless");
+		    options.addArguments("disable-gpu");
+		    
 			log.info("Launching Chrome Browser");
 						
 			WebDriverManager.chromedriver().setup();
