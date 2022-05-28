@@ -3,8 +3,10 @@ package testBase;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.Inet4Address;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -40,7 +42,7 @@ public class BaseClass {
 		
 	@BeforeSuite
 	@Parameters({"browser","environment"})
-	public void setup(String Browser,String environemnt) throws MalformedURLException {
+	public void setup(String Browser,String environemnt) throws MalformedURLException, UnknownHostException {
 		
        ConfigFactory.setProperty("env", environemnt);
         
@@ -63,7 +65,11 @@ public class BaseClass {
 		    options.addArguments("--headless");
 		    options.addArguments("disable-gpu");
 		    
+		    
+		    
 			log.info("Launching Chrome Browser");
+			
+			log.info("System IP" +Inet4Address.getLocalHost().getHostAddress());
 						
 			//WebDriverManager.chromedriver().setup();
 			
@@ -73,7 +79,7 @@ public class BaseClass {
 			 
 			 capability.setBrowserName("chrome");
 			
-			driver = new RemoteWebDriver(new URL("http://192.168.64.3:4444/wd/hub"), capability);
+			driver = new RemoteWebDriver(new URL("http://"+Inet4Address.getLocalHost().getHostAddress()+":4444/wd/hub"), capability);
 			
 			//driver =new ChromeDriver(options);
 			
