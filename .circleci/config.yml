@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:18.2.0
+      - image: cimg/node:13.12-browsers
     steps:
       - run:
           name: Start install111 Selenium
