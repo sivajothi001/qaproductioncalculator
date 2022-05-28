@@ -58,14 +58,16 @@ public class BaseClass {
 	         
 			prefs.put("download.default_directory",System.getProperty("user.dir") +"/Data_Files/");
 			 
-			ChromeOptions options = new ChromeOptions();
+			//ChromeOptions options = new ChromeOptions();
 			
-		    options.setExperimentalOption("prefs", prefs);
-		    options.addArguments("--no-sandbox");
-		    options.addArguments("--headless");
-		    options.addArguments("disable-gpu");
+		  //  options.setExperimentalOption("prefs", prefs);
+		   // options.addArguments("--no-sandbox");
+		   // options.addArguments("--headless");
+		   // options.addArguments("disable-gpu");
 		    
-		    
+		    String aaa = "http://"+Inet4Address.getLocalHost().getHostAddress()+":4444/wd/hub";
+			
+			System.out.println(aaa);
 		    
 			log.info("Launching Chrome Browser");
 			
@@ -73,15 +75,22 @@ public class BaseClass {
 						
 			//WebDriverManager.chromedriver().setup();
 			
-			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver");  
+			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver");
 			
-			 DesiredCapabilities capability = new DesiredCapabilities();
+			System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
+			
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless","--disable-gpu");
+			
+			// DesiredCapabilities capability = new DesiredCapabilities();
 			 
-			 capability.setBrowserName("chrome");
+			// capability.setBrowserName("chrome");
+			 
+			//capability.setCapability("version", "latest");
 			
-			driver = new RemoteWebDriver(new URL("http://"+Inet4Address.getLocalHost().getHostAddress()+":4444/wd/hub"), capability);
+			//driver = new RemoteWebDriver(new URL("http://"+Inet4Address.getLocalHost().getHostAddress()+":4444/wd/hub"), capability);
 			
-			//driver =new ChromeDriver(options);
+			driver =new ChromeDriver(options);
 			
 			log.info("Launched Chrome Browser");
 			

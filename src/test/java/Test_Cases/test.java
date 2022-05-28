@@ -1,6 +1,8 @@
 package Test_Cases;
 
 import java.io.File;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.text.DecimalFormat;
 import java.util.Formatter;
@@ -23,15 +25,14 @@ public class test {
 
 	
 	@Test
-	public void test123()
+	public void test123() throws UnknownHostException
 	{
-		Object[][] excelFiles = null ;
 		
 		//String ToRow = ctx.getCurrentXmlTest().getParameter("row");
 		
-		excelFiles = XLUtility.getDataFromloginSheet("Input_Data.xlsx","eeee");
+		String aaa = "http://"+Inet4Address.getLocalHost().getHostAddress()+":4444/wd/hub";
 			
-		System.out.println("test "+excelFiles);
+		System.out.println(aaa);
 		
 		
 	}
