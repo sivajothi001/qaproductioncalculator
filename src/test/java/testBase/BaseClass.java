@@ -73,7 +73,7 @@ public class BaseClass {
 			 
 			 capability.setBrowserName("chrome");
 			
-			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
+			driver = new RemoteWebDriver(new URL("http://192.168.64.3:4444/wd/hub"), capability);
 			
 			//driver =new ChromeDriver(options);
 			
