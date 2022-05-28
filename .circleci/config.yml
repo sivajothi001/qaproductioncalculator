@@ -6,7 +6,7 @@ jobs:
     steps:
       - run:
           name: Start install111 Selenium
-          command: ssudo apt update
+          command: sudo apt update
       - run:
           name: Start install1111 Selenium
           command: sudo apt install libnss3
