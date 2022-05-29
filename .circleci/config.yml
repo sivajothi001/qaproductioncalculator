@@ -53,6 +53,7 @@ jobs:
   test:
     docker:
       - image: circleci/openjdk:8-jdk
+    working_directory: ~/circleCiTesting
     steps:
       - run:
           name: test
