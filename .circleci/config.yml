@@ -67,7 +67,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - run:
           name: mvn test 1
-          command: mvn test -DsuiteFile =Test_Suites\TSC_CilentFunctionality.xml
+          command: mvn test -DsuiteFile =Test_Suites/TSC_CilentFunctionality.xml
 
       - store_artifacts:
           path: target/surefire-reports
