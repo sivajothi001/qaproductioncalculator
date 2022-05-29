@@ -51,14 +51,10 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
   test:
-    docker:
-      - image: circleci/openjdk:8-jdk
     steps:
       - run:
           name: test
           command: mvn test
-      - store_test_results:
-          path: target/surefire-reports
 workflows:
   sample:
     jobs:
