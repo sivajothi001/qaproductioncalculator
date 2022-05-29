@@ -51,6 +51,8 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
   test:
+    docker:
+      - image: circleci/openjdk:8-jdk
     steps:
       - run:
           name: test
