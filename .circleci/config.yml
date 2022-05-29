@@ -1,18 +1,23 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
-      - image: cimg/node:18.2.0-browsers
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/circleCiTesting
+
+    environment:
+      MAVEN_OPTS: -Xmx3200m
+    
     steps:
       - checkout
-      - run: mkdir test-reports
+
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run: mvn dependency:go-offline
+
       - run:
           name: Install latest version of ChromeDriver Sample
           command: |
@@ -35,16 +40,20 @@ jobs:
             sudo apt-get -y install imagemagick x11-apps
       - run:
           name: Running X virtual framebuffer
-          command: Xvfb :0 -ac &    
+          command: Xvfb :0 -ac &
+
+      - run:
+          name: Run Tests
+          command: |
+            export DISPLAY=:99
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
   test:
     docker:
-      - image: cimg/openjdk:11.0
+      - image: circleci/openjdk:8-jdk
     steps:
-      - checkout
-      - run:
-          name: build
-          command: mvn -B -DskipTests clean package
-
       - run:
           name: test
           command: mvn test
