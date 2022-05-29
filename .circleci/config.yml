@@ -6,13 +6,13 @@ jobs:
     steps:
       - checkout
       - run: mkdir test-reports
-      - run:
-          name: Download Selenium
-          command: curl -O http://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.0.jar
-      - run:
-          name: Start Selenium
-          command: java -jar selenium-server-standalone-3.9.0.jar -log test-reports/selenium.log
-          background: true
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "pom.xml" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: mvn dependency:go-offline
       - run:
           name: Install latest version of ChromeDriver Sample
           command: |
