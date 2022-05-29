@@ -157,7 +157,7 @@
           <version>2.22.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>Test_Suites/${testSuite}</suiteXmlFile>
+						<suiteXmlFile>${suiteFile}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
         </plugin>
