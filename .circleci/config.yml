@@ -1,24 +1,62 @@
-version: 2.1
-orbs: 
-  maven: circleci/maven@1.3.0
-  auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
+version: 2.0
 
-      - run:
-          name: Install latest version of ChromeDriver Sample
-          command: |
-            sudo wget https://chromedriver.storage.googleapis.com/101.0.4951.41/chromedriver_linux64.zip
-            sudo unzip chromedriver_linux64.zip
-            sudo rm chromedriver_linux64.zip
-            sudo mv chromedriver /usr/bin/
-            sudo chmod 777 /usr/bin/chromedriver
-            sudo apt-get install libxi6 libgconf-2-4
-            sudo apt-get -y install xvfb gtk2-engines-pixbuf
-            sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
-            sudo apt-get install xvfb
-            sudo apt-get -y install imagemagick x11-apps 
+jobs:
+  test:
+    parallelism: 2
+    docker:
+      - image: cimg/openjdk:17.0.1
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            - v1-dependencies-
+      - attach_workspace:
+          at: ./target
+      - run: |
+            ./mvnw \
+            -Dtest=$(for file in $(circleci tests glob "src/test/**/**.java" \
+            | circleci tests split --split-by=timings); \
+            do basename $file \
+            | sed -e "s/.java/,/"; \
+            done | tr -d '\r\n') \
+            -e test verify
+      - store_test_results:
+          path: target/surefire-reports
+      - store_artifacts:
+          path: target/site/jacoco/index.html
+
+  build:
+    docker:
+      - image: cimg/openjdk:17.0.1
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            - v1-dependencies-
+      - run: ./mvnw -Dmaven.test.skip=true package
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+      - persist_to_workspace:
+         root: ./
+         paths:
+           - target/
+
 workflows:
-  maven_test:
+  version: 2
+
+  build-then-test:
     jobs:
-      - maven/test 
+      - build
+      - test:
+          requires:
+            - build
