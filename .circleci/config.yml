@@ -51,6 +51,7 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
     steps:
+      - checkout
       - run:
           name: mvn test 1
           command: mvn test
