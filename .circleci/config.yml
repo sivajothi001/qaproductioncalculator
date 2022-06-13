@@ -39,6 +39,7 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
+  test:
       - run:
           name: mvn test 1
           command: mvn test
@@ -48,3 +49,13 @@ jobs:
           destination: tr1
       - store_test_results:
           path: target/surefire-reports
+
+workflows:
+  version: 2
+
+  build-then-test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
