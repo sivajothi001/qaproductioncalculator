@@ -8,6 +8,9 @@ jobs:
     docker:
       # specify the version you desire here
       - image: cimg/openjdk:17.0.1
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
 
     working_directory: ~/circleCiTesting
 
@@ -44,6 +47,9 @@ jobs:
     docker:
       # specify the version you desire here
       - image: cimg/openjdk:17.0.1
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
       - run:
           name: mvn test 1
           command: mvn test
@@ -58,7 +64,7 @@ workflows:
   version: 2
   build-then-test:
     jobs:
-      - build:
+      - build
       - test:
           requires:
             - build
