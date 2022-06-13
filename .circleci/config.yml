@@ -4,10 +4,7 @@ orbs:
   auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
-  
-workflows:
-  maven_test:
-    jobs:
+
       - run:
           name: Install latest version of ChromeDriver Sample
           command: |
@@ -20,7 +17,8 @@ workflows:
             sudo apt-get -y install xvfb gtk2-engines-pixbuf
             sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
             sudo apt-get install xvfb
-            sudo apt-get -y install imagemagick x11-apps
-      - run:
-          name: TSC_AllFunctionalityForAdmin
-          command: mvn test
+            sudo apt-get -y install imagemagick x11-apps 
+workflows:
+  maven_test:
+    jobs:
+      - maven/test 
