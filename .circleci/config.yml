@@ -44,12 +44,6 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
   
   test:
-    docker:
-      # specify the version you desire here
-      - image: cimg/openjdk:17.0.1
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run:
