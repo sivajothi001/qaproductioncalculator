@@ -40,6 +40,10 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
   test:
+  
+     docker:
+      # specify the version you desire here
+      - image: cimg/openjdk:17.0.1
       - run:
           name: mvn test 1
           command: mvn test
