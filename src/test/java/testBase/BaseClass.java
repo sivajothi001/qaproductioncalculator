@@ -73,11 +73,11 @@ public class BaseClass {
 			
 			log.info("System IP" +Inet4Address.getLocalHost().getHostAddress());
 						
-			//WebDriverManager.chromedriver().setup();
+			 WebDriverManager.chromedriver().setup();
 			
 			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver");
 			
-			System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
+			//System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
 			
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless","--disable-gpu");
