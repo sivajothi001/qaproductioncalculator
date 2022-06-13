@@ -77,7 +77,7 @@ public class BaseClass {
 			
 			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/drivers/chromedriver");
 			
-			System.setProperty("webdriver.chrome.driver","/home/circleci/.cache/selenium/chromedriver/linux64/102.0.5005.61/chromedriver");
+			System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
 			
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless","--disable-gpu");
