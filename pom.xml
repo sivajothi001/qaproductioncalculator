@@ -157,7 +157,7 @@
           <version>2.22.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>${suiteFile}</suiteXmlFile>
+						<suiteXmlFile>Test_Suites/TSC_CilentFunctionality.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
         </plugin>
